@@ -14,3 +14,6 @@ C:\Users\Public\Documents\National Instruments\MStudioVS2012\DotNET\Examples\Sys
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\ShowAllHardware.exe.config
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.exe
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.pdb
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\ShowAllHardware.exe.config
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.exe
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.pdb

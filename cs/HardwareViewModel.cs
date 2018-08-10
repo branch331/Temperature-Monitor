@@ -1,6 +1,6 @@
 ﻿using NationalInstruments.SystemConfiguration;
 
-namespace NationalInstruments.Examples.CalibrationAudit
+namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     class HardwareViewModel
     {
@@ -16,44 +16,6 @@ namespace NationalInstruments.Examples.CalibrationAudit
 
             if (productResource != null)
             {
-                try
-                {
-                    Model = productResource.ProductName;
-                    SerialNumber = productResource.SerialNumber;
-
-                    if (productResource.SupportsInternalCalibration)
-                    {
-                        IntLastCalDate = productResource.InternalCalibrationDate.ToString("MM-dd-yyyy");
-                        IntLastCalTemp = productResource.InternalCalibrationTemperature.ToString();
-                    }
-                    else
-                    {
-                        IntLastCalDate = "";
-                    }
-
-                    if (productResource.SupportsExternalCalibration)
-                    {
-                        ExtLastCalDate = productResource.ExternalCalibrationDate.ToString("MM-dd-yyyy");
-                        ExtLastCalTemp = productResource.ExternalCalibrationTemperature.ToString();
-                        RecommendedNextCal = productResource.ExternalCalibrationDueDate.ToString("MM-dd-yyyy"); 
-
-                        if (System.DateTime.Compare(productResource.ExternalCalibrationDueDate, System.DateTime.Now) < 0)
-                        {
-                            CalibrationOverdue = true;
-                        }
-                        else
-                        {
-                            CalibrationOverdue = false;
-                        }
-
-                    }
-                    else
-                    {
-                        ExtLastCalDate = "";
-                        ExtLastCalTemp = "";
-                        RecommendedNextCal = "";
-                    }
-
                     TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
 
                     try
@@ -62,14 +24,8 @@ namespace NationalInstruments.Examples.CalibrationAudit
                     }
                     catch
                     {
-                        Temperature = "";
-                    }
-
-                }
-                catch (SystemConfigurationException ex)
-                {
-                    Error = ex.ErrorCode.ToString();
-                }
+                        Temperature = "0.00";
+                    }    
             }
         }
 
@@ -91,61 +47,7 @@ namespace NationalInstruments.Examples.CalibrationAudit
             private set;
         }
 
-        public string Model
-        {
-            get;
-            private set;
-        }
-
-        public string SerialNumber
-        {
-            get;
-            private set;
-        }
-
-        public string IntLastCalDate
-        {
-            get;
-            private set;
-        }
-
-        public string IntLastCalTemp
-        {
-            get;
-            private set;
-        }
-
-        public string ExtLastCalDate
-        {
-            get;
-            private set;
-        }
-
-        public string ExtLastCalTemp
-        {
-            get;
-            private set;
-        }
-
-        public string RecommendedNextCal
-        {
-            get;
-            private set;
-        }
-
         public string Temperature
-        {
-            get;
-            private set;
-        }
-
-        public string Error
-        {
-            get;
-            private set;
-        }
-
-        public bool CalibrationOverdue
         {
             get;
             private set;

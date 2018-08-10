@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace NationalInstruments.Examples.CalibrationAudit
+namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     public class AliasConverter : IMultiValueConverter
     {

@@ -1,0 +1,13 @@
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\BoardTemperatureMonitor.exe.config
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\BoardTemperatureMonitor.exe
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\BoardTemperatureMonitor.pdb
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\MainWindow.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\App.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor_MarkupCompile.cache
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor_MarkupCompile.lref
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\MainWindow.baml
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor.g.resources
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor.exe
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor.pdb
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\BoardTemperatureMonitor.2012.csprojResolveAssemblyReference.cache

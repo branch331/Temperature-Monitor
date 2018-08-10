@@ -4,14 +4,14 @@ using System.Linq;
 using System.Windows;
 using NationalInstruments.SystemConfiguration;
 
-namespace NationalInstruments.Examples.CalibrationAudit
+namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
-    class CalibrationAuditWorker : INotifyPropertyChanged
+    class BoardTemperatureMonitorWorker : INotifyPropertyChanged
     {
         private bool canBeginRunAudit;
         private List<HardwareViewModel> allHardwareResources;
 
-        public CalibrationAuditWorker()
+        public BoardTemperatureMonitorWorker()
         {
             CanBeginRunAudit = true;
         }

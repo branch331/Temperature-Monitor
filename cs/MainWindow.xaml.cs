@@ -1,18 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace NationalInstruments.Examples.CalibrationAudit
+namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            worker = new CalibrationAuditWorker();
+            worker = new BoardTemperatureMonitorWorker();
             mainGrid.DataContext = worker;
         }
 
-        private CalibrationAuditWorker worker;
+        private BoardTemperatureMonitorWorker worker;
 
         private void OnRunAuditClick(object sender, RoutedEventArgs e)
         {

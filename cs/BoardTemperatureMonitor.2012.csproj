@@ -8,8 +8,8 @@
     <ProjectGuid>{2B2EE028-217A-4465-A6F5-4B2527DB05AF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NationalInstruments.Examples.CalibrationAudit</RootNamespace>
-    <AssemblyName>CalibrationAudit</AssemblyName>
+    <RootNamespace>NationalInstruments.Examples.BoardTemperatureMonitor</RootNamespace>
+    <AssemblyName>BoardTemperatureMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -98,7 +98,7 @@
     </ApplicationDefinition>
     <Compile Include="AliasConverter.cs" />
     <Compile Include="HardwareViewModel.cs" />
-    <Compile Include="CalibrationAuditWorker.cs" />
+    <Compile Include="BoardTemperatureMonitorWorker.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

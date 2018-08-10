@@ -1,8 +1,8 @@
-﻿<Window x:Class="NationalInstruments.Examples.CalibrationAudit.MainWindow"
+﻿<Window x:Class="NationalInstruments.Examples.BoardTemperatureMonitor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:NationalInstruments.Examples.CalibrationAudit"
-        Title="Calibration Audit" Height="600" Width="1000" Icon="App.ico">
+        xmlns:local="clr-namespace:NationalInstruments.Examples.BoardTemperatureMonitor"
+        Title="Board Temperature Monitor" Height="600" Width="1000" Icon="App.ico">
     <Window.Resources>
         <local:AliasConverter x:Key="AliasConverter"/>
     </Window.Resources>
@@ -24,7 +24,7 @@
 2. Press <Bold>Run Audit</Bold>.</TextBlock>
         </Expander>
 
-        <Grid Grid.Row="1" IsEnabled="{Binding CanBeginRunAudit}">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -65,26 +65,7 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Model" Width="*" Binding="{Binding Model}"/>
-                <DataGridTextColumn Header="Serial Number" Width="*" Binding="{Binding SerialNumber}"/>
-                <DataGridTextColumn Header="Internal Last Cal Date" Width="*" Binding="{Binding IntLastCalDate}"/>
-                <DataGridTextColumn Header="Internal Last Cal Temp (C)" Width="*" Binding="{Binding IntLastCalTemp}"/>
-                <DataGridTextColumn Header="External Last Cal Date" Width="*" Binding="{Binding ExtLastCalDate}"/>
-                <DataGridTextColumn Header="External Last Cal Temp (C)" Width="*" Binding="{Binding ExtLastCalTemp}"/>
-                <DataGridTextColumn Header="Recommended Next Cal" Width="*" Binding="{Binding RecommendedNextCal}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Text" Value="Foo" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding CalibrationOverdue}" Value="True">
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
                 <DataGridTextColumn Header="Current Temperature" Width="*" Binding="{Binding Temperature}"/>
-                <DataGridTextColumn Header="Error" Width="*" Binding="{Binding Error}"/>
             </DataGrid.Columns>
         </DataGrid>
 

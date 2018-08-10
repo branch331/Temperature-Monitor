@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace NationalInstruments.Examples.ShowAllHardware
+namespace NationalInstruments.Examples.CalibrationAudit
 {
     public class AliasConverter : IMultiValueConverter
     {

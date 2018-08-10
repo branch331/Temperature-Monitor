@@ -4,43 +4,29 @@ using System.Linq;
 using System.Windows;
 using NationalInstruments.SystemConfiguration;
 
-namespace NationalInstruments.Examples.ShowAllHardware
+namespace NationalInstruments.Examples.CalibrationAudit
 {
-    class ShowHardwareWorker : INotifyPropertyChanged
+    class CalibrationAuditWorker : INotifyPropertyChanged
     {
-        private bool canBeginShowHardware;
-        private bool shouldShowNetworkDevices;
+        private bool canBeginRunAudit;
         private List<HardwareViewModel> allHardwareResources;
 
-        public ShowHardwareWorker()
+        public CalibrationAuditWorker()
         {
-            CanBeginShowHardware = true;
+            CanBeginRunAudit = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool CanBeginShowHardware
+        public bool CanBeginRunAudit
         {
-            get { return canBeginShowHardware; }
+            get { return canBeginRunAudit; }
             set
             {
-                if (canBeginShowHardware != value)
+                if (canBeginRunAudit != value)
                 {
-                    canBeginShowHardware = value;
-                    NotifyPropertyChanged("CanBeginShowHardware");
-                }
-            }
-        }
-
-        public bool ShouldShowNetworkDevices
-        {
-            get { return shouldShowNetworkDevices; }
-            set
-            {
-                if (shouldShowNetworkDevices != value)
-                {
-                    shouldShowNetworkDevices = value;
-                    NotifyPropertyChanged("FilteredHardwareResources");
+                    canBeginRunAudit = value;
+                    NotifyPropertyChanged("CanBeginRunAudit");
                 }
             }
         }
@@ -66,7 +52,7 @@ namespace NationalInstruments.Examples.ShowAllHardware
                     return Enumerable.Empty<HardwareViewModel>();
                 }
                 return from resource in AllHardwareResources
-                       where ShouldShowNetworkDevices || !(resource.NumberOfExperts == 1 && resource.Expert0ProgrammaticName.Equals("network"))
+                       where !(resource.NumberOfExperts == 1 && resource.Expert0ProgrammaticName.Equals("network"))
                        select resource;
             }
         }
@@ -84,33 +70,43 @@ namespace NationalInstruments.Examples.ShowAllHardware
             }
         }
 
-        public void StartShowHardware(string password)
+        public void StartRunAudit(string password)
         {
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += new DoWorkEventHandler(
                 delegate(object o, DoWorkEventArgs args)
                 {
-                    CanBeginShowHardware = false;
+                    CanBeginRunAudit = false;
                     try
                     {
                         // Because the view does not allow modifying resources, there isn't a need to keep
                         // the raw HardwareResourceBase objects after creating the view models.
                         AllHardwareResources = null;
                         var session = new SystemConfiguration.SystemConfiguration(Target, Username, password);
-                        SystemConfiguration.Filter filter = new SystemConfiguration.Filter(session); //add a filter
-                        ResourceCollection rawResources = session.FindHardware(filter, "xnet"); //filter out only xnet devices
+
+                        SystemConfiguration.Filter filter = new SystemConfiguration.Filter(session); 
+                        filter.IsDevice = true;
+                        filter.SupportsCalibration = true;
+                        filter.IsPresent = SystemConfiguration.IsPresentType.Present;
+                        filter.IsSimulated = false; 
+
+                        ResourceCollection rawResources = session.FindHardware(filter); 
+
                         AllHardwareResources =
-                            (from resource in rawResources
+                            (from resource in rawResources 
                              select new HardwareViewModel(resource)).ToList();
                     }
                     catch (SystemConfigurationException ex)
                     {
-                        string errorMessage = string.Format("Find Hardware threw a System Configuration Exception.\n\nErrorCode: {0:X}\n{1}", ex.ErrorCode, ex.Message);
-                        MessageBox.Show(errorMessage, "System Configuration Exception");
+                        if (ex.ErrorCode.ToString() != "-2147220623") //Do not report error if device does not support self calibration (-2147220623)
+                        {
+                            string errorMessage = string.Format("Find Hardware threw a System Configuration Exception.\n\nErrorCode: {0:X}\n{1}", ex.ErrorCode, ex.Message);
+                            MessageBox.Show(errorMessage, "System Configuration Exception");
+                        }
                     }
                     finally
                     {
-                        CanBeginShowHardware = true;
+                        CanBeginRunAudit = true;
                     }
                 }
             );

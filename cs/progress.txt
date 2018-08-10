@@ -1,0 +1,56 @@
+8/8/18:
+
+updating Hardwareviewmodel; changed from hardwareresrouce => productresource
+UI can't fit all headers well, not sure how much to change it
+
+Next Steps:
+*Looking for temperature reading property... escalate
+need to implement filter/logic for internal/ext cal data to be shown
+edit worker.cs
+
+8/9/18:
+working on Filter in worker.cs
+issue is that FindHardware returns hardwareresourcebase but in hardwareviewmodel we have productresource class
+
+Looks like product resource inherits from hardwareresourcebase >> hardwareresource >> productresourcebase >> productresource
+
+Tried casting (Line 14 of HardwareViewModel: ProductResource productResource = resource as ProductResource;) maybe? no errors
+
+simulated device needed for testing. program runs fine but nothing to test with
+
+added internal/external support if statements (HardwareViewModel line 22, 28)
+
+in hardwareviewmodel, if the prop doesnt exist or whatever it won't display anything on table
+	maybe this is only for simulated devices...?
+
+Next Steps:
+-Confirm if temperature property exists or not
+-make field red if calibration date is overdue
+-test w/ hardware (simulated or not). Change back 'IsSimulated' property to False for filter
+-fix hardwareviewmodel (test w/ real HW first)
+
+8/10/18:
+-Works w/ NI 9221, 9263 in cDAQ-9178
+-Works w/ 8135 chassis and 6368 card
+Seems to be working w/ real hardware
+
+-Edited UI to enable text wrapping in header; changed title of UI
+
+-Trying to implement temperature readings (good)
+
+-Trying to make field red if cal date is overdue. I think it works!
+
+-Error code ignores "does not support int cal" error; displays on UI if error does occur
+
+-Change recommended last cal dates, and rec next cal dates to ignore hour/min value to shorten space on UI
+
+Next Steps:
+-test w/ test plan
+-remove comments/debugging parts of code
+
+
+
+
+
+
+

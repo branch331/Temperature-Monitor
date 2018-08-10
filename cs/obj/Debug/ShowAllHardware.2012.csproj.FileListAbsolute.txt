@@ -17,6 +17,9 @@ C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardwa
 C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\bin\Debug\ShowAllHardware.exe.config
 C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.exe
 C:\Users\brand\Documents\GitHub\Temperature-Monitor\cs\obj\Debug\ShowAllHardware.pdb
+<<<<<<< HEAD
 C:\Users\brand\Documents\GitHub\Calibration-Audit\cs\bin\Debug\ShowAllHardware.exe.config
 C:\Users\brand\Documents\GitHub\Calibration-Audit\cs\obj\Debug\ShowAllHardware.exe
 C:\Users\brand\Documents\GitHub\Calibration-Audit\cs\obj\Debug\ShowAllHardware.pdb
+=======
+>>>>>>> 311aaededefe18b2883af433b1ce469b03c42632

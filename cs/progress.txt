@@ -4,6 +4,6 @@
 -need to figure out how to loop this
 -how to display graph?
 
+8/13/18:
 
-
-
+-added stop button as skeleton; no functionality yet

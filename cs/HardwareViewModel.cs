@@ -15,9 +15,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
 
             if (productResource != null)
-            {
+            {       
                     TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
-
+                    
                     try
                     {
                         Temperature = sensors[0].Reading.ToString(); //Sensor 0 is the internal temperature

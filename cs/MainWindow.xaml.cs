@@ -19,5 +19,11 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             worker.StartRunAudit(passwordBox.Password);
         }
 
+        private void OnStopButtonClick(object sender, RoutedEventArgs e)
+        {
+            //stop
+        }
+
+
     }
 }

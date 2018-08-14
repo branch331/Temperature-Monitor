@@ -42,7 +42,9 @@
             <PasswordBox Name="passwordBox" Grid.Row="1" Grid.Column="2" Margin="8,0,0,0"/>
         </Grid>
 
-        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="0,20" Content="Run Audit" Height="40" Width="150" IsDefault="True" Click="OnRunAuditClick" IsEnabled="{Binding CanBeginRunAudit}"/>
+        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="441,20.333,378.333,19.667" Content="Run Audit" Height="40" Width="150" IsDefault="True" Click="OnRunAuditClick" IsEnabled="{Binding CanBeginRunAudit}"/>
+        
+        <Button Grid.Row="2" HorizontalAlignment="Right" Margin="0,20.333,79.333,19.667" Content="Stop" Height="40" Width="150" IsDefault="True" Click="OnStopButtonClick" IsEnabled="{Binding CanClickStop}"/>
 
         <DataGrid Grid.Row="3" ItemsSource="{Binding FilteredHardwareResources}" AutoGenerateColumns="False" IsReadOnly="True" IsEnabled="{Binding CanBeginRunAudit}">
             <DataGrid.ColumnHeaderStyle>

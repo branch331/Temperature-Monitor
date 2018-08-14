@@ -9,11 +9,13 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
     class BoardTemperatureMonitorWorker : INotifyPropertyChanged
     {
         private bool canBeginRunAudit;
+        private bool canClickStop;
         private List<HardwareViewModel> allHardwareResources;
 
         public BoardTemperatureMonitorWorker()
         {
             CanBeginRunAudit = true;
+            CanClickStop = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,7 +32,20 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-
+        
+        public bool CanClickStop
+        {
+            get { return canClickStop; }
+            set
+            {
+                if (canClickStop != value)
+                {
+                    canClickStop = value;
+                    NotifyPropertyChanged("CanClickStop");
+                }
+            }
+        }
+        
         public string Target
         {
             get;
@@ -77,6 +92,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 delegate(object o, DoWorkEventArgs args)
                 {
                     CanBeginRunAudit = false;
+                    CanClickStop = true;
                     try
                     {
                         // Because the view does not allow modifying resources, there isn't a need to keep
@@ -91,11 +107,12 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         filter.IsSimulated = false; 
 
                         ResourceCollection rawResources = session.FindHardware(filter); 
-
+                        //maybe iterate through list here?
                         AllHardwareResources =
                             (from resource in rawResources 
                              select new HardwareViewModel(resource)).ToList();
                     }
+                        //or use this to find the devices, and then query temperature
                     catch (SystemConfigurationException ex)
                     {
                         if (ex.ErrorCode.ToString() != "-2147220623") //Do not report error if device does not support self calibration (-2147220623)
@@ -107,6 +124,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     finally
                     {
                         CanBeginRunAudit = true;
+                        CanClickStop = false;
                     }
                 }
             );

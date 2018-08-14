@@ -7,3 +7,14 @@
 8/13/18:
 
 -added stop button as skeleton; no functionality yet
+
+8/14/18:
+
+-While loop to query all hardware resources for temperature
+-added stop button callback: will set StopMonitor flag to True
+
+Next Steps:
+-databind to graph; right now it's databinded to the location on the table (needs testing w/ real HW)
+	-Convert data back to doubles
+-auto-create legends
+-UI changes (decsription/instructions, button layout)

@@ -4,7 +4,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     class HardwareViewModel
     {
-        public HardwareViewModel(HardwareResourceBase resource)
+        public HardwareViewModel(HardwareResourceBase resource, double temperature_Limit)
         { 
             UserAlias = resource.UserAlias;
             NumberOfExperts = resource.Experts.Count;
@@ -15,17 +15,25 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
 
             if (productResource != null)
-            {       
-                    TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
+            {
+                Limit_Reached = false;
+
+                TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
                     
-                    try
+                try
+                {
+                    Temperature = sensors[0].Reading; //Sensor 0 is the internal temperature
+                    
+                    if (Temperature > temperature_Limit)
                     {
-                        Temperature = sensors[0].Reading.ToString(); //Sensor 0 is the internal temperature
+                        System.Windows.MessageBox.Show(string.Format("Warning! {0} is/are above the temperature limit. Stopping scan...", UserAlias));
+                        Limit_Reached = true;
                     }
-                    catch
-                    {
-                        Temperature = "0.00";
-                    }    
+                }
+                catch
+                {
+                    Temperature = 0;
+                }    
             }
         }
 
@@ -47,13 +55,19 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             private set;
         }
 
-        public string Temperature
+        public double Temperature
         {
             get;
             private set;
         }
 
         public int NumberOfExperts
+        {
+            get;
+            private set;
+        }
+
+        public bool Limit_Reached
         {
             get;
             private set;

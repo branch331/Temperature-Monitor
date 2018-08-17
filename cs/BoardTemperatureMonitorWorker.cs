@@ -64,6 +64,12 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             set;
         }
 
+        public double Temperature_Limit
+        {
+            get;
+            set;
+        }
+
         public IEnumerable<HardwareViewModel> FilteredHardwareResources
         {
             get
@@ -99,6 +105,12 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 {
                     CanBeginRunAudit = false;
                     StopMonitor = false;
+
+                    if (Temperature_Limit == 0)
+                    {
+                        Temperature_Limit = 50;
+                    }
+
                     try
                     {
                         // Because the view does not allow modifying resources, there isn't a need to keep
@@ -120,7 +132,16 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         {
                             AllHardwareResources =
                                 (from resource in rawResources
-                                 select new HardwareViewModel(resource)).ToList();
+                                 select new HardwareViewModel(resource, Temperature_Limit)).ToList();
+
+                            for (int i = 0; i < AllHardwareResources.Count(); i++)
+                            {
+                                if (AllHardwareResources[i].Limit_Reached == true)
+                                {
+                                    StopMonitor = true;
+                                }
+                            }
+
                             System.Threading.Thread.Sleep(100);
                         }
                         //or use this to find the devices, and then query temperature

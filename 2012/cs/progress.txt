@@ -30,3 +30,6 @@ Next Steps:
 	-Convert data back to doubles
 -auto-create legends
 -UI button layout
+
+8/20/18:
+-red border on textbox for temperature limit, seems to be validationerror but i cant get rid of it

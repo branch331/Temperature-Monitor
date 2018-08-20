@@ -122,7 +122,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         filter.IsDevice = true;
                         filter.SupportsCalibration = true;
                         filter.IsPresent = SystemConfiguration.IsPresentType.Present;
-                        filter.IsSimulated = true; //********SET TO TRUE FOR TESTING 
+                        filter.IsSimulated = false; 
 
                         ResourceCollection rawResources = session.FindHardware(filter);
 

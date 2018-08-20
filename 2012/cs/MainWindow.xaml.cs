@@ -21,9 +21,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
         private void OnStopButtonClick(object sender, RoutedEventArgs e)
         {
-            //stop
             worker.StopMonitor = true;
         }
-        
     }
 }

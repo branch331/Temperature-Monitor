@@ -17,11 +17,12 @@
         </Grid.RowDefinitions>
 
         <Expander Grid.Row="0" Header="Operating Instructions" IsExpanded="True" Margin="0,0,0,20">
-            <TextBlock xml:space="preserve" TextWrapping="Wrap" Padding="10,4,0,0"><Bold>Overview:</Bold> Obtains calibration information for the hardware on a selected target. The target can be left empty for localhost.
+            <TextBlock xml:space="preserve" TextWrapping="Wrap" Padding="10,4,0,0"><Bold>Overview:</Bold> Monitors temperature of boards in the system and reports a warning when temperature exceeds <Bold>Temperature Limit</Bold>.
 <Bold>Requirements:</Bold> NI System Configuration, applicable device drivers
 <Bold>Instructions:</Bold>
 1. Enter the <Bold>Target</Bold>. Enter the <Bold>User Name</Bold> and <Bold>Password</Bold> if necessary.
-2. Press <Bold>Run Audit</Bold>.</TextBlock>
+2. Set the <Bold>Temperature Limit</Bold> (Default 50 degrees C).
+3. Run the VI. </TextBlock>
         </Expander>
 
         <Grid Grid.Row="1">
@@ -42,7 +43,13 @@
             <PasswordBox Name="passwordBox" Grid.Row="1" Grid.Column="2" Margin="8,0,0,0"/>
         </Grid>
 
-        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="0,20" Content="Run Audit" Height="40" Width="150" IsDefault="True" Click="OnRunAuditClick" IsEnabled="{Binding CanBeginRunAudit}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Temperature Limit (C)" Margin="0,10.333,850.333,52.667"/>
+        
+        <TextBox Grid.Row="2" HorizontalAlignment="Left" Text="{Binding Temperature_Limit, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Margin="0,32.333,0,19.667" Width="215"/>
+        
+        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="413,20.333,406.333,19.667" Content="Run Audit" Height="40" Width="150" IsDefault="True" Click="OnRunAuditClick" IsEnabled="{Binding CanBeginRunAudit}"/>
+        
+        <Button Grid.Row="2" HorizontalAlignment="Right" Margin="0,20.333,79.333,19.667" Content="Stop" Height="40" Width="150" IsDefault="True" Click="OnStopButtonClick" IsEnabled="{Binding CanClickStop}"/>
 
         <DataGrid Grid.Row="3" ItemsSource="{Binding FilteredHardwareResources}" AutoGenerateColumns="False" IsReadOnly="True" IsEnabled="{Binding CanBeginRunAudit}">
             <DataGrid.ColumnHeaderStyle>

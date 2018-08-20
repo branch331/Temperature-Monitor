@@ -9,11 +9,13 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
     class BoardTemperatureMonitorWorker : INotifyPropertyChanged
     {
         private bool canBeginRunAudit;
+        private bool canClickStop;
         private List<HardwareViewModel> allHardwareResources;
 
         public BoardTemperatureMonitorWorker()
         {
             CanBeginRunAudit = true;
+            CanClickStop = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,7 +32,20 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-
+        
+        public bool CanClickStop
+        {
+            get { return canClickStop; }
+            set
+            {
+                if (canClickStop != value)
+                {
+                    canClickStop = value;
+                    NotifyPropertyChanged("CanClickStop");
+                }
+            }
+        }
+        
         public string Target
         {
             get;
@@ -38,6 +53,18 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         }
 
         public string Username
+        {
+            get;
+            set;
+        }
+
+        public bool StopMonitor
+        {
+            get;
+            set;
+        }
+
+        public double Temperature_Limit
         {
             get;
             set;
@@ -77,6 +104,13 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 delegate(object o, DoWorkEventArgs args)
                 {
                     CanBeginRunAudit = false;
+                    StopMonitor = false;
+
+                    if (Temperature_Limit == 0)
+                    {
+                        Temperature_Limit = 50;
+                    }
+
                     try
                     {
                         // Because the view does not allow modifying resources, there isn't a need to keep
@@ -88,13 +122,29 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         filter.IsDevice = true;
                         filter.SupportsCalibration = true;
                         filter.IsPresent = SystemConfiguration.IsPresentType.Present;
-                        filter.IsSimulated = false; 
+                        filter.IsSimulated = true; //********SET TO TRUE FOR TESTING 
 
-                        ResourceCollection rawResources = session.FindHardware(filter); 
+                        ResourceCollection rawResources = session.FindHardware(filter);
 
-                        AllHardwareResources =
-                            (from resource in rawResources 
-                             select new HardwareViewModel(resource)).ToList();
+                        CanClickStop = true;
+                        //maybe iterate through list here?
+                        while (StopMonitor == false)
+                        {
+                            AllHardwareResources =
+                                (from resource in rawResources
+                                 select new HardwareViewModel(resource, Temperature_Limit)).ToList();
+
+                            for (int i = 0; i < AllHardwareResources.Count(); i++)
+                            {
+                                if (AllHardwareResources[i].Limit_Reached == true)
+                                {
+                                    StopMonitor = true;
+                                }
+                            }
+
+                            System.Threading.Thread.Sleep(100);
+                        }
+                        //or use this to find the devices, and then query temperature
                     }
                     catch (SystemConfigurationException ex)
                     {
@@ -107,6 +157,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     finally
                     {
                         CanBeginRunAudit = true;
+                        CanClickStop = false;
                     }
                 }
             );

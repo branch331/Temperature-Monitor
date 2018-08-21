@@ -1,0 +1,12 @@
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\bin\Debug\BoardTemperatureMonitor.exe.config
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\BoardTemperatureMonitor.exe
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\BoardTemperatureMonitor.pdb
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\bin\Debug\BoardTemperatureMonitor.exe
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\bin\Debug\BoardTemperatureMonitor.pdb
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\MainWindow.g.cs
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\App.g.cs
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\BoardTemperatureMonitor_MarkupCompile.cache
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\BoardTemperatureMonitor_MarkupCompile.lref
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\MainWindow.baml
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2010\cs\obj\Debug\BoardTemperatureMonitor.g.resources

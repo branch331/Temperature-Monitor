@@ -1,12 +1,13 @@
-Show All Hardware Example
+Board Temperature Monitor Example
 
-Overview:
-This example demonstrates how to get all the hardware for a target with System Configuration installed along with how to display properties about resources on the target.
+Overview: 
+Monitors temperature of boards in the system and reports a warning when temperature exceeds "Temperature Limit".
 
-Requirements:
+Requirements: 
 NI System Configuration, applicable device drivers
 
 Instructions:
-1. Run the example.
-2. Enter the target and the user name and password, if necessary.
-3. Press "Show Hardware".
+1. Enter the Target. Enter the User Name and Password if necessary.
+2. Set the "Temperature Limit".
+3. Click "Start Monitor" to start monitoring temperature.
+4. Click "Stop" to stop monitoring temperature. 

@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NationalInstruments.Examples.BoardTemperatureMonitor</RootNamespace>
-    <AssemblyName>BoardTemperatureMonitor</AssemblyName>
+    <AssemblyName>NationalInstruments.Examples.BoardTemperatureMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

@@ -23,7 +23,9 @@
 1. Enter the <Bold>Target</Bold>. Enter the <Bold>User Name</Bold> and <Bold>Password</Bold> if necessary.
 2. Set the <Bold>Temperature Limit</Bold>.
 3. Click <Bold>Start Monitor</Bold> to start monitoring temperature.
-4. Click <Bold>Stop</Bold> to stop monitoring temperature.</TextBlock>
+4. Click <Bold>Stop</Bold> to stop monitoring temperature.
+            
+<Bold>Note: </Bold>Boards that do not support temperature monitoring will display 0 as temperature.</TextBlock>
         </Expander>
 
         <Grid Grid.Row="1">

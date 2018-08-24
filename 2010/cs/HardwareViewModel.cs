@@ -21,9 +21,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 try
                 {
                     TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
-                    Temperature = sensors[0].Reading; //Sensor 0 is the internal temperature
+                    Temperature = sensors[0].Reading.ToString("0.00"); //Sensor 0 is the internal temperature
                     
-                    if (Temperature > temperatureLimit)
+                    if (System.Convert.ToDouble(Temperature) > temperatureLimit)
                     {
                         System.Windows.MessageBox.Show(string.Format("Warning! {0} is/are above the temperature limit. Stopping scan...", UserAlias));
                         Limit_Reached = true;
@@ -54,7 +54,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             private set;
         }
 
-        public double Temperature
+        public string Temperature
         {
             get;
             private set;

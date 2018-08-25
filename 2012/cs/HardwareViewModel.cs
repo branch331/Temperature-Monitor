@@ -17,7 +17,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             if (productResource != null)
             {
                 Limit_Reached = false;
- 
+
                 try
                 {
                     TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
@@ -25,13 +25,13 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     
                     if (System.Convert.ToDouble(Temperature) > temperatureLimit)
                     {
-                        System.Windows.MessageBox.Show(string.Format("Warning! {0} is/are above the temperature limit. Stopping scan...", UserAlias));
                         Limit_Reached = true;
+                        //System.Windows.MessageBox.Show(string.Format("{0}", UserAlias));
                     }
                 }
                 catch
                 {
-                    Temperature = "0";
+                    Temperature = "0.00";
                 }    
             }
         }

@@ -31,7 +31,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
                 catch
                 {
-                    Temperature = 0;
+                    Temperature = "0";
                 }    
             }
         }

@@ -50,3 +50,6 @@ C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\National
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.g.resources
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
 C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2012\cs\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe.config
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
+C:\Users\brand\Documents\GitHub\Temperature-Monitor\2012\cs\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb

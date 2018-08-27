@@ -11,6 +11,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         private bool canStartMonitor;
         private bool canClickStop;
         private List<HardwareViewModel> allHardwareResources;
+        private string devicesAboveLimit;
 
         public BoardTemperatureMonitorWorker()
         {
@@ -100,6 +101,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         public void StartRunAudit(string password)
         {
             BackgroundWorker worker = new BackgroundWorker();
+            devicesAboveLimit = "";
             worker.DoWork += new DoWorkEventHandler(
                 delegate(object o, DoWorkEventArgs args)
                 {
@@ -128,15 +130,20 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                             AllHardwareResources =
                                 (from resource in rawResources
                                  select new HardwareViewModel(resource, TemperatureLimit)).ToList();
-
+                            
                             for (int i = 0; i < AllHardwareResources.Count(); i++)
                             {
                                 if (AllHardwareResources[i].Limit_Reached == true)
                                 {
-                                    StopMonitor = true;
+                                    devicesAboveLimit += AllHardwareResources[i].UserAlias + " ";
                                 }
                             }
-
+                            
+                            if (devicesAboveLimit != "")
+                            {
+                                MessageBox.Show(string.Format("Warning! {0}is/are above the temperature limit. Stopping scan...", devicesAboveLimit));
+                                StopMonitor = true;
+                            }
                             System.Threading.Thread.Sleep(100);
                         }
                     }

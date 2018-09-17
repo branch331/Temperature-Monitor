@@ -16,7 +16,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
             if (productResource != null)
             {
-                Limit_Reached = false;
+                LimitReached = false;
 
                 try
                 {
@@ -25,7 +25,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     
                     if (System.Convert.ToDouble(Temperature) > temperatureLimit)
                     {
-                        Limit_Reached = true;
+                        LimitReached = true;
                         //System.Windows.MessageBox.Show(string.Format("{0}", UserAlias));
                     }
                 }
@@ -66,7 +66,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             private set;
         }
 
-        public bool Limit_Reached
+        public bool LimitReached
         {
             get;
             private set;

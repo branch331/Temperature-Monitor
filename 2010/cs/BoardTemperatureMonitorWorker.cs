@@ -115,10 +115,10 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         AllHardwareResources = null;
                         var session = new SystemConfiguration.SystemConfiguration(Target, Username, password);
 
-                        SystemConfiguration.Filter filter = new SystemConfiguration.Filter(session); 
+                        Filter filter = new Filter(session); 
                         filter.IsDevice = true;
                         filter.SupportsCalibration = true;
-                        filter.IsPresent = SystemConfiguration.IsPresentType.Present;
+                        filter.IsPresent = IsPresentType.Present;
                         filter.IsSimulated = false; 
 
                         ResourceCollection rawResources = session.FindHardware(filter);
@@ -133,7 +133,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                             
                             for (int i = 0; i < AllHardwareResources.Count(); i++)
                             {
-                                if (AllHardwareResources[i].Limit_Reached == true)
+                                if (AllHardwareResources[i].LimitReached == true)
                                 {
                                     devicesAboveLimit += AllHardwareResources[i].UserAlias + " ";
                                 }

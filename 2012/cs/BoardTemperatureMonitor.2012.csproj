@@ -77,7 +77,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NationalInstruments.SystemConfiguration" />
+    <Reference Include="NationalInstruments.SystemConfiguration, Version=18.0.40.49152, Culture=neutral, PublicKeyToken=1109e9caaa0bff6a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\National Instruments\MeasurementStudioVS2012\DotNET\Assemblies\Current\NationalInstruments.SystemConfiguration.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

@@ -6,7 +6,7 @@ using NationalInstruments.SystemConfiguration;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
-    class BoardTemperatureMonitorWorker : INotifyPropertyChanged
+    class BoardTemperatureMonitorWorker : INotifyPropertyChanged // Internal class
     {
         private bool canStartMonitor;
         private bool canClickStop;
@@ -79,7 +79,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 {
                     return Enumerable.Empty<HardwareViewModel>();
                 }
-                return AllHardwareResources.Where(x => x.NumberOfExperts > 1 || x.Expert0ProgrammaticName != "network");
+                return AllHardwareResources.Where(x => x.NumberOfExperts > 1 || x.ExpertProgrammaticName != "network");
             }
         }
 
@@ -136,7 +136,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                             }
                         }
 
-                        if (devicesAboveLimit != "")
+                        if (string.IsNullOrEmpty(devicesAboveLimit))
                         {
                             MessageBox.Show(string.Format("Warning! {0}is/are above the temperature limit. Stopping scan...", devicesAboveLimit));
                             StopMonitor = true;

@@ -5,34 +5,35 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
     class HardwareViewModel
     {
         public HardwareViewModel(HardwareResourceBase resource, double temperatureLimit)
-        { 
+        {
             UserAlias = resource.UserAlias;
             NumberOfExperts = resource.Experts.Count;
             Expert0ResourceName = resource.Experts[0].ResourceName;
             Expert0ProgrammaticName = resource.Experts[0].ExpertProgrammaticName;
 
-            ProductResource productResource = resource as ProductResource; 
+            ProductResource productResource = resource as ProductResource;
 
-
-            if (productResource != null)
+            if (productResource == null)
             {
-                LimitReached = false;
+                return;
+            }
 
-                try
+            LimitReached = false;
+
+            try
+            {
+                TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
+                Temperature = sensors[0].Reading.ToString("0.00"); //Sensor 0 is the internal temperature
+
+                if (System.Convert.ToDouble(Temperature) > temperatureLimit)
                 {
-                    TemperatureSensor[] sensors = productResource.QueryTemperatureSensors(SensorInfo.Reading);
-                    Temperature = sensors[0].Reading.ToString("0.00"); //Sensor 0 is the internal temperature
-                    
-                    if (System.Convert.ToDouble(Temperature) > temperatureLimit)
-                    {
-                        LimitReached = true;
-                        //System.Windows.MessageBox.Show(string.Format("{0}", UserAlias));
-                    }
+                    LimitReached = true;
+                    //System.Windows.MessageBox.Show(string.Format("{0}", UserAlias));
                 }
-                catch
-                {
-                    Temperature = "0.00";
-                }    
+            }
+            catch
+            {
+                Temperature = "0.00";
             }
         }
 

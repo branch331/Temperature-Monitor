@@ -33,7 +33,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-        
+
         public bool CanClickStop
         {
             get { return canClickStop; }
@@ -46,7 +46,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-        
+
         public string Target
         {
             get;
@@ -101,60 +101,60 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             BackgroundWorker worker = new BackgroundWorker();
             devicesAboveLimit = "";
             worker.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
+            {
+                CanStartMonitor = false;
+                StopMonitor = false;
+
+                try
                 {
-                    CanStartMonitor = false;
-                    StopMonitor = false;
+                    // Because the view does not allow modifying resources, there isn't a need to keep
+                    // the raw HardwareResourceBase objects after creating the view models.
+                    AllHardwareResources = null;
+                    var session = new SystemConfiguration.SystemConfiguration(Target, Username, password);
 
-                    try
+                    Filter filter = new Filter(session);
+                    filter.IsDevice = true;
+                    filter.SupportsCalibration = true;
+                    filter.IsPresent = IsPresentType.Present;
+                    filter.IsSimulated = false;
+
+                    ResourceCollection rawResources = session.FindHardware(filter);
+
+                    CanClickStop = true;
+
+                    while (StopMonitor == false)
                     {
-                        // Because the view does not allow modifying resources, there isn't a need to keep
-                        // the raw HardwareResourceBase objects after creating the view models.
-                        AllHardwareResources = null;
-                        var session = new SystemConfiguration.SystemConfiguration(Target, Username, password);
+                        AllHardwareResources = rawResources
+                            .Select(x => new HardwareViewModel(x, TemperatureLimit))
+                            .ToList();
 
-                        Filter filter = new Filter(session); 
-                        filter.IsDevice = true;
-                        filter.SupportsCalibration = true;
-                        filter.IsPresent = IsPresentType.Present;
-                        filter.IsSimulated = false; 
-
-                        ResourceCollection rawResources = session.FindHardware(filter);
-
-                        CanClickStop = true;
-                        
-                        while (StopMonitor == false)
+                        for (int i = 0; i < AllHardwareResources.Count(); i++)
                         {
-                            AllHardwareResources = rawResources
-                                .Select(x => new HardwareViewModel(x, TemperatureLimit))
-                                .ToList();
-                            
-                            for (int i = 0; i < AllHardwareResources.Count(); i++)
+                            if (AllHardwareResources[i].LimitReached == true)
                             {
-                                if (AllHardwareResources[i].LimitReached == true)
-                                {
-                                    devicesAboveLimit += AllHardwareResources[i].UserAlias + " ";
-                                }
+                                devicesAboveLimit += AllHardwareResources[i].UserAlias + " ";
                             }
-                            
-                            if (devicesAboveLimit != "")
-                            {
-                                MessageBox.Show(string.Format("Warning! {0}is/are above the temperature limit. Stopping scan...", devicesAboveLimit));
-                                StopMonitor = true;
-                            }
-                            System.Threading.Thread.Sleep(100);
                         }
-                    }
-                    catch (SystemConfigurationException ex)
-                    {
-                        string errorMessage = string.Format("Find Hardware threw a System Configuration Exception.\n\nErrorCode: {0:X}\n{1}", ex.ErrorCode, ex.Message);
-                        MessageBox.Show(errorMessage, "System Configuration Exception");
-                    }
-                    finally
-                    {
-                        CanStartMonitor = true;
-                        CanClickStop = false;
+
+                        if (devicesAboveLimit != "")
+                        {
+                            MessageBox.Show(string.Format("Warning! {0}is/are above the temperature limit. Stopping scan...", devicesAboveLimit));
+                            StopMonitor = true;
+                        }
+                        System.Threading.Thread.Sleep(100);
                     }
                 }
+                catch (SystemConfigurationException ex)
+                {
+                    string errorMessage = string.Format("Find Hardware threw a System Configuration Exception.\n\nErrorCode: {0:X}\n{1}", ex.ErrorCode, ex.Message);
+                    MessageBox.Show(errorMessage, "System Configuration Exception");
+                }
+                finally
+                {
+                    CanStartMonitor = true;
+                    CanClickStop = false;
+                }
+            }
             );
             worker.RunWorkerAsync();
         }

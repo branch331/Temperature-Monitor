@@ -136,7 +136,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                                 }
                             }
                             
-                            if (string.IsNullOrEmpty(devicesAboveLimit))
+                            if (!string.IsNullOrEmpty(devicesAboveLimit))
                             {
                                 MessageBox.Show(string.Format("Warning! {0}is/are above the temperature limit. Stopping scan...", devicesAboveLimit));
                                 StopMonitor = true;

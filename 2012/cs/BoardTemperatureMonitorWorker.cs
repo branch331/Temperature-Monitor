@@ -79,9 +79,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 {
                     return Enumerable.Empty<HardwareViewModel>();
                 }
-                return from resource in AllHardwareResources
-                       where !(resource.NumberOfExperts == 1 && resource.Expert0ProgrammaticName.Equals("network"))
-                       select resource;
+                return AllHardwareResources.Where(x => x.NumberOfExperts > 1 || x.Expert0ProgrammaticName != "network");
             }
         }
 
@@ -102,8 +100,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         {
             BackgroundWorker worker = new BackgroundWorker();
             devicesAboveLimit = "";
-            worker.DoWork += new DoWorkEventHandler(
-                delegate(object o, DoWorkEventArgs args)
+            worker.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
                 {
                     CanStartMonitor = false;
                     StopMonitor = false;
@@ -127,10 +124,10 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         
                         while (StopMonitor == false)
                         {
-                            AllHardwareResources =
-                                (from resource in rawResources
-                                 select new HardwareViewModel(resource, TemperatureLimit)).ToList();
-                            
+                            AllHardwareResources = rawResources
+                                .Select(x => new HardwareViewModel(x, TemperatureLimit))
+                                .ToList();
+
                             for (int i = 0; i < AllHardwareResources.Count(); i++)
                             {
                                 if (AllHardwareResources[i].LimitReached == true)

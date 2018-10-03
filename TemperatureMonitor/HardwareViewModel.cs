@@ -37,7 +37,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             catch
             {
                 Temperature = "N/A";
-            }    
+            }
         }
 
         public string UserAlias

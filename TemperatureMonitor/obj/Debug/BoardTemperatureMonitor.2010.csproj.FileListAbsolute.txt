@@ -1,0 +1,3 @@
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe.config
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb

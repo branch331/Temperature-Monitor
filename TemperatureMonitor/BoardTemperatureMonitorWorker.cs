@@ -33,7 +33,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-        
+
         public bool CanClickStop
         {
             get { return canClickStop; }
@@ -46,7 +46,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 }
             }
         }
-        
+
         public string Target
         {
             get;
@@ -132,7 +132,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                             devicesAboveLimit = string.Join(", ", AllHardwareResources
                                 .Where(r => r.LimitReached)
                                 .Select(r => r.UserAlias));
-                            
+
                             if (!string.IsNullOrEmpty(devicesAboveLimit))
                             {
                                 MessageBox.Show(string.Format("Warning! {0} is/are above the temperature limit. Stopping scan...", devicesAboveLimit));

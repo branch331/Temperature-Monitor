@@ -13,3 +13,16 @@ C:\Users\cjohnsto\Desktop\Examples_9-26-18\Examples_9-26-18\TemperatureMonitor\o
 C:\Users\cjohnsto\Desktop\Examples_9-26-18\Examples_9-26-18\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.g.resources
 C:\Users\cjohnsto\Desktop\Examples_9-26-18\Examples_9-26-18\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
 C:\Users\cjohnsto\Desktop\Examples_9-26-18\Examples_9-26-18\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe.config
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\BoardTemperatureMonitor.2012.csprojResolveAssemblyReference.cache
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\MainWindow.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\App.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor_MarkupCompile.cache
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor_MarkupCompile.lref
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\MainWindow.baml
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.g.resources
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\obj\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.pdb

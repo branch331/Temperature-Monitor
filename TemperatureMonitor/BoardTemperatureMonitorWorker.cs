@@ -6,7 +6,7 @@ using NationalInstruments.SystemConfiguration;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
-    internal class BoardTemperatureMonitorWorker : INotifyPropertyChanged 
+    internal class BoardTemperatureMonitorWorker : INotifyPropertyChanged
     {
         /// <summary>
         /// Uses the StartTemperatureMonitor method to check for all present, non-simulated NI devices in the system using the HardwareViewModel.
@@ -116,16 +116,16 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         AllHardwareResources = null;
                         var session = new SystemConfiguration.SystemConfiguration(Target, Username, password);
 
-                        Filter filter = new Filter(session); 
+                        Filter filter = new Filter(session);
                         filter.IsDevice = true;
                         filter.SupportsCalibration = true;
                         filter.IsPresent = IsPresentType.Present;
-                        filter.IsSimulated = false; 
+                        filter.IsSimulated = false;
 
                         ResourceCollection rawResources = session.FindHardware(filter);
 
                         CanClickStop = true;
-                        
+
                         while (StopMonitor == false)
                         {
                             AllHardwareResources = rawResources

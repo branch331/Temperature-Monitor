@@ -5,6 +5,8 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     public partial class MainWindow : Window
     {
+        private BoardTemperatureMonitorWorker worker;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -13,8 +15,6 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             TemperatureLimitBox.Text = "50";
             TemperatureSlider.Value = 50;
         }
-
-        private BoardTemperatureMonitorWorker worker;
 
         private void OnRunAuditClick(object sender, RoutedEventArgs e)
         {

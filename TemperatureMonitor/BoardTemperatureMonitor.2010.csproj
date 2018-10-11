@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2B2EE028-217A-4465-A6F5-4B2527DB05AH}</ProjectGuid>
+    <ProjectGuid>{418D047C-89E8-44EB-8139-565C0B70C484}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NationalInstruments.Examples.BoardTemperatureMonitor</RootNamespace>

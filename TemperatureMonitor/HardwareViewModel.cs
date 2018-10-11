@@ -1,5 +1,5 @@
-﻿using NationalInstruments.SystemConfiguration;
-using System.Linq;
+﻿using System.Linq;
+using NationalInstruments.SystemConfiguration;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
@@ -11,18 +11,18 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             NumberOfExperts = resource.Experts.Count;
             ExpertResourceName = resource.Experts[0].ResourceName;
             ExpertProgrammaticName = resource.Experts[0].ExpertProgrammaticName;
-
             LimitReached = false;
 
             try
             {
                 TemperatureSensor[] sensors = resource.QueryTemperatureSensors(SensorInfo.Reading);
 
-                Temperature = string.Join(", ", sensors.Select(s => s.Reading.ToString("0.00"));
+                Temperature = string.Join(", ", sensors
+                    .Select(s => s.Reading.ToString("0.00")));
 
                 LimitReached = sensors.Any(s => s.Reading > temperatureLimit);
             }
-            catch
+            catch (SystemConfigurationException) // If device does not have internal temperature sensor(s), display temperature as "N/A". 
             {
                 Temperature = "N/A";
             }

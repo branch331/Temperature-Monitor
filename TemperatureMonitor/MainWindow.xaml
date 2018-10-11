@@ -49,7 +49,7 @@
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Temperature Limit (°C)" Margin="0,10.333,-0.667,273.667" Grid.RowSpan="2"/>
 
         <TextBox x:Name="TemperatureLimitBox" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding ElementName=TemperatureSlider, Path=Value, StringFormat=N2}" IsEnabled="{Binding CanStartMonitor}" Margin="0,28,0,39" Width="211"/>
-        <!-- ="{Binding TemperatureLimit, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" -->
+
         <Slider x:Name="TemperatureSlider" Grid.Row="2" HorizontalAlignment="Left" Maximum="100" Value="{Binding TemperatureLimit, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Margin="-2,55,0,0" Width="213"/>
 
         <Button Grid.Row="2" HorizontalAlignment="Center" Content="Start Monitor" Height="40" Width="150" IsDefault="True" Click="OnRunAuditClick" IsEnabled="{Binding CanStartMonitor}"/>

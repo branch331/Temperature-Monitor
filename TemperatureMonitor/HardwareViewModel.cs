@@ -23,7 +23,8 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 Temperature = string.Join(", ", sensors
                     .Select(s => s.Reading.ToString("0.00")));
 
-                LimitReached = sensors.Any(s => s.Reading > temperatureLimit);
+                LimitReached = sensors
+                    .Any(s => s.Reading > temperatureLimit);
             }
             catch (SystemConfigurationException) // If device does not have internal temperature sensor(s), display temperature as "N/A".
             {

@@ -1,0 +1,1 @@
+C:\Users\bnguyen\Documents\GitHub\Temperature-Monitor\TemperatureMonitor\bin\Debug\NationalInstruments.Examples.BoardTemperatureMonitor.exe.config

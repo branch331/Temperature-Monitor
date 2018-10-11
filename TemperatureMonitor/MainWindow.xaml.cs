@@ -18,7 +18,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
         private void OnRunAuditClick(object sender, RoutedEventArgs e)
         {
-            worker.StartRunAudit(passwordBox.Password);
+            worker.StartTemperatureMonitor(passwordBox.Password);
         }
 
         private void OnStopButtonClick(object sender, RoutedEventArgs e)

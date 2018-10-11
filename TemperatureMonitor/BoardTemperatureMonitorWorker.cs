@@ -8,6 +8,10 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     internal class BoardTemperatureMonitorWorker : INotifyPropertyChanged 
     {
+        /// <summary>
+        /// Uses the StartTemperatureMonitor method to check for all present, non-simulated NI devices in the system using the HardwareViewModel.
+        /// Updates Temperature values for each device using a background worker.
+        /// </summary>
         private bool canStartMonitor;
         private bool canClickStop;
         private List<HardwareViewModel> allHardwareResources;
@@ -96,7 +100,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             }
         }
 
-        public void StartRunAudit(string password)
+        public void StartTemperatureMonitor(string password)
         {
             BackgroundWorker worker = new BackgroundWorker();
             devicesAboveLimit = "";

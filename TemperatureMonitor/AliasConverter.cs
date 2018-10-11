@@ -6,6 +6,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
     public class AliasConverter : IMultiValueConverter
     {
+        /// <summary>
+        /// Displays either user alias or resource name of device in system.
+        /// </summary>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             // Display the user alias if it is not null or empty.

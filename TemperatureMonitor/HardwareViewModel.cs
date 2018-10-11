@@ -18,19 +18,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             {
                 TemperatureSensor[] sensors = resource.QueryTemperatureSensors(SensorInfo.Reading);
 
-                Temperature = " ";
-
-                for (int i = 0; i < sensors.Length; i++)
-                {
-                    if (i != sensors.Length - 1)
-                    {
-                        Temperature += sensors[i].Reading.ToString("0.00") + ", ";
-                    }
-                    else
-                    {
-                        Temperature += sensors[i].Reading.ToString("0.00");
-                    }
-                }
+                Temperature = string.Join(", ", sensors.Select(s => s.Reading.ToString("0.00"));
 
                 LimitReached = sensors.Any(s => s.Reading > temperatureLimit);
             }

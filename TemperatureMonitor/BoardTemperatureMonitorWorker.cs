@@ -126,12 +126,17 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
 
                         CanClickStop = true;
 
+                        AllHardwareResources = rawResources
+                            .OfType<ProductResource>()
+                            .Select(x => new HardwareViewModel(x, TemperatureLimit))
+                            .ToList();
+
                         while (StopMonitor == false)
                         {
-                            AllHardwareResources = rawResources
-                                .OfType<ProductResource>()
-                                .Select(x => new HardwareViewModel(x, TemperatureLimit))
-                                .ToList();
+                            foreach (HardwareViewModel model in AllHardwareResources)
+                            {
+                                model.InitializeSensorData();
+                            }
 
                             devicesAboveLimit = string.Join(", ", AllHardwareResources
                                 .Where(r => r.LimitReached)

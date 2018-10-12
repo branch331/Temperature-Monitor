@@ -8,10 +8,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         /// <summary>
         /// Class for each device in the system that contains temperature data.
         /// </summary>
-        public HardwareViewModel(ProductResource resource, double temperatureLimit)
+        public HardwareViewModel(ProductResource resource)
         {
             Resource = resource;
-            TemperatureLimit = temperatureLimit;
             UserAlias = resource.UserAlias;
             NumberOfExperts = resource.Experts.Count;
             ExpertResourceName = resource.Experts[0].ResourceName;
@@ -19,7 +18,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             LimitReached = false;
         }
 
-        public void InitializeSensorData()
+        public void InitializeSensorData(double temperatureLimit)
         {
             try
             {
@@ -29,7 +28,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     .Select(s => s.Reading.ToString("0.00")));
 
                 LimitReached = sensors
-                    .Any(s => s.Reading > TemperatureLimit);
+                    .Any(s => s.Reading > temperatureLimit);
             }
             catch (SystemConfigurationException) // If device does not have internal temperature sensor(s), display temperature as "N/A".
             {
@@ -38,12 +37,6 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
         }
 
         public ProductResource Resource
-        {
-            get;
-            private set;
-        }
-
-        public double TemperatureLimit
         {
             get;
             private set;

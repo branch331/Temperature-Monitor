@@ -76,6 +76,5 @@
                 <DataGridTextColumn Header="Current Temperature (Sensor 0 (°C), Sensor 1 (°C), etc.)" Width="*" Binding="{Binding Temperature}"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Window>

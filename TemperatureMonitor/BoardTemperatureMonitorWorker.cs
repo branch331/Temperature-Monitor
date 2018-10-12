@@ -136,7 +136,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         foreach (HardwareViewModel model in AllHardwareResources)
                         {
                             model.InitializeSensorData(TemperatureLimit);
-                            NotifyPropertyChanged("FilteredHardwareResources"); // Generate Property Change event to update temperatures on UI.
+                            NotifyPropertyChanged("FilteredHardwareResources"); // Generate PropertyChanged event to update temperatures on UI.
                         }
 
                         devicesAboveLimit = string.Join(", ", AllHardwareResources

@@ -4,11 +4,11 @@ using System.Windows.Data;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
+    /// <summary>
+    /// Displays either user alias or resource name of device in system.
+    /// </summary>
     public class AliasConverter : IMultiValueConverter
     {
-        /// <summary>
-        /// Displays either user alias or resource name of device in system.
-        /// </summary>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             // Display the user alias if it is not null or empty.

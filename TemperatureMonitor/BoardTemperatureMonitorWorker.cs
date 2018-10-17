@@ -6,12 +6,12 @@ using NationalInstruments.SystemConfiguration;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
+    /// <summary>
+    /// Uses the StartTemperatureMonitor method to check for all present, non-simulated NI devices in the system using the HardwareViewModel.
+    /// Updates Temperature values for each device using a background worker.
+    /// </summary>
     internal class BoardTemperatureMonitorWorker : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Uses the StartTemperatureMonitor method to check for all present, non-simulated NI devices in the system using the HardwareViewModel.
-        /// Updates Temperature values for each device using a background worker.
-        /// </summary>
         private bool canStartMonitor;
         private bool canClickStop;
         private List<HardwareViewModel> allHardwareResources;
@@ -136,8 +136,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                         foreach (HardwareViewModel model in AllHardwareResources)
                         {
                             model.InitializeSensorData(TemperatureLimit);
-                            NotifyPropertyChanged("FilteredHardwareResources"); // Generate PropertyChanged event to update temperatures on UI.
                         }
+
+                        NotifyPropertyChanged("FilteredHardwareResources"); // Generate PropertyChanged event to update temperatures on UI.
 
                         devicesAboveLimit = string.Join(", ", AllHardwareResources
                             .Where(r => r.LimitReached)

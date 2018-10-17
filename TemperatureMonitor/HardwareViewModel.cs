@@ -3,11 +3,11 @@ using NationalInstruments.SystemConfiguration;
 
 namespace NationalInstruments.Examples.BoardTemperatureMonitor
 {
+    /// <summary>
+    /// Class for each device in the system that contains temperature data.
+    /// </summary>
     internal class HardwareViewModel
     {
-        /// <summary>
-        /// Class for each device in the system that contains temperature data.
-        /// </summary>
         public HardwareViewModel(ProductResource resource)
         {
             Resource = resource;
@@ -30,9 +30,9 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                 LimitReached = sensors
                     .Any(s => s.Reading > temperatureLimit);
             }
-            catch (SystemConfigurationException) // If device does not have internal temperature sensor(s), display temperature as "N/A".
+            catch (SystemConfigurationException)
             {
-                Temperature = "N/A";
+                Temperature = "N/A"; // If device does not have internal temperature sensor(s), display temperature as "N/A".
             }
         }
 

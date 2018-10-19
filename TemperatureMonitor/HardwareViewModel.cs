@@ -18,7 +18,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
             LimitReached = false;
         }
 
-        public void InitializeSensorData(double temperatureLimit)
+        public void UpdateSensorData(double temperatureLimit)
         {
             try
             {

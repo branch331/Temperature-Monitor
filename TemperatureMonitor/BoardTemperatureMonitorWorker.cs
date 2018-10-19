@@ -135,7 +135,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     {
                         foreach (HardwareViewModel model in AllHardwareResources)
                         {
-                            model.InitializeSensorData(TemperatureLimit);
+                            model.UpdateSensorData(TemperatureLimit);
                         }
 
                         NotifyPropertyChanged("FilteredHardwareResources"); // Generate PropertyChanged event to update temperatures on UI.
@@ -162,8 +162,7 @@ namespace NationalInstruments.Examples.BoardTemperatureMonitor
                     CanStartMonitor = true;
                     CanClickStop = false;
                 }
-            }
-            );
+            });
             worker.RunWorkerAsync();
         }
 

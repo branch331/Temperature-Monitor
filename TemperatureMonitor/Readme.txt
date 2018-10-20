@@ -1,7 +1,7 @@
 Board Temperature Monitor Example
 
 Overview:
- Monitors all temperature sensors of boards in the system and reports a warning when any temperature sensor exceeds "Temperature Limit".
+Monitors all temperature sensors of boards in the system and reports a warning when any temperature sensor exceeds "Temperature Limit".
 
 Requirements:
 NI System Configuration, applicable device drivers
